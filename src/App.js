@@ -4,11 +4,6 @@ import './App.css';
 import NavBar from './components/navBar/navBar';
 import TaskList from './components/TaskList/TaskList';
 
-const task = {
-  id: 0,
-  title: "nova tarefa",
-  state: "pendente"
-}
 
 let idAcc = 0;
 const addID = () => {
@@ -20,14 +15,31 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (title, state) => {
-    console.log("função dentro do app")
     const newTask = {
       id: addID(),
       title,
       state
     };
-    setTasks((existinTasks) =>{
-      return [...existinTasks, newTask]
+    setTasks((existingTasks) => {
+      return [...existingTasks, newTask]
+    });
+  };
+
+  const updateTask = (id, title, state) => {
+    setTasks((existingTasks) => {
+      return existingTasks.map((tasks) => {
+        if (tasks.id === id) {
+          return {...tasks, title, state};
+        } else {
+          return tasks;
+        }
+      });
+    });
+  };
+
+  const deletTask = (id) =>{
+    setTasks((existingTasks) =>{
+      return existingTasks.filter((tasks) => tasks.id !== id);
     });
   };
 
@@ -35,7 +47,30 @@ function App() {
     <div className="App">
       <NavBar />
       <div className="container">
-        <TaskList title="Pendente" onAddTasks={addTask} tasks={tasks}/>
+        <TaskList 
+          title="Pendente" 
+          taskState="Pendente"
+          onAddTasks={addTask} 
+          tasks={tasks.filter((t) => t.state === "Pendente")}
+          onTaskUpdate={updateTask}
+          onDeletTask={deletTask}
+        />
+         <TaskList 
+          title="Fazendo" 
+          taskState="Fazendo"
+          onAddTasks={addTask} 
+          tasks={tasks.filter((t) => t.state === "Fazendo")}
+          onTaskUpdate={updateTask}
+          onDeletTask={deletTask}
+        />
+         <TaskList 
+          title="Completa"
+          taskState="Completa"
+          onAddTasks={addTask} 
+          tasks={tasks.filter((t) => t.state === "Completa")}
+          onTaskUpdate={updateTask}
+          onDeletTask={deletTask}
+        />
       </div>
     </div>
   );

@@ -1,18 +1,27 @@
 import "./taskList.css";
+import Taskitem from "../taskItem/taskItem";
 import PropTypes from "prop-types";
 
-function TaskList ({ title, onAddTasks, tasks }) {
+function TaskList ({ title, taskState, onAddTasks, tasks, onTaskUpdate, onDeletTask }) {
     const addTask = () =>{
-        console.log('função dentro do task list')
-        onAddTasks("nova tarefa", "Pendente")
-    }
+        onAddTasks("nova tarefa", taskState)
+    };
 
     return(
         <div className="TaskList">
             <div className="title"> {title}</div>
             <div className="content">
                 {tasks.map((task) =>{
-                    return <div key={task.id}>{task.title}</div>
+                    return (
+                        <Taskitem
+                            key={task.id}
+                            id={task.id} 
+                            title={task.title} 
+                            taskState={task.state}
+                            onTaskUpdate={onTaskUpdate}
+                            onDeletTask={onDeletTask}
+                        />
+                    );
                 })}
             </div>
             <button onClick={addTask}>Adicionar Tarefa</button>
