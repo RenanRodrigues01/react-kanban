@@ -2,7 +2,7 @@ import "./taskItem.css"
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function Taskitem ({ id, title, taskState, onTaskUpdate, onDeletTask }) {
+function Taskitem ({ id, title, taskState, onTaskUpdate, onDeletTask, setTask }) {
     const [editing, setEditing] = useState(false);
     const [editableTitle, setEditableTitle] = useState(title)
 
@@ -10,6 +10,7 @@ function Taskitem ({ id, title, taskState, onTaskUpdate, onDeletTask }) {
         const newTitle = e.target.value;
         setEditableTitle(newTitle);
         onTaskUpdate(id, newTitle, taskState);
+        setTask(newTitle)
     };
 
     const onKeyPress = (e) => {

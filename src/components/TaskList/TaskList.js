@@ -2,7 +2,7 @@ import "./taskList.css";
 import Taskitem from "../taskItem/taskItem";
 import PropTypes from "prop-types";
 
-function TaskList ({ title, taskState, onAddTasks, tasks, onTaskUpdate, onDeletTask }) {
+function TaskList ({ title, taskState, onAddTasks, tasks, onTaskUpdate, onDeletTask, onsetTask }) {
     const addTask = () =>{
         onAddTasks("nova tarefa", taskState)
     };
@@ -20,6 +20,7 @@ function TaskList ({ title, taskState, onAddTasks, tasks, onTaskUpdate, onDeletT
                             taskState={task.state}
                             onTaskUpdate={onTaskUpdate}
                             onDeletTask={onDeletTask}
+                            setTask={onsetTask}
                         />
                     );
                 })}

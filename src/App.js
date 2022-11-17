@@ -12,6 +12,7 @@ const addID = () => {
 };
 
 function App() {
+  const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
   const [tasks, setTasks] = useState([]);
 
   const addTask = (title, state) => {
@@ -23,6 +24,11 @@ function App() {
     setTasks((existingTasks) => {
       return [...existingTasks, newTask]
     });
+  };
+
+  const setTask = (nome) => {
+    
+    localStorage.setItem("tarefas", JSON.stringify(nome))
   };
 
   const updateTask = (id, title, state) => {
@@ -54,6 +60,7 @@ function App() {
           tasks={tasks.filter((t) => t.state === "Pendente")}
           onTaskUpdate={updateTask}
           onDeletTask={deletTask}
+          onsetTask={setTask}
         />
          <TaskList 
           title="Fazendo" 
@@ -62,6 +69,7 @@ function App() {
           tasks={tasks.filter((t) => t.state === "Fazendo")}
           onTaskUpdate={updateTask}
           onDeletTask={deletTask}
+          onsetTask={setTask}
         />
          <TaskList 
           title="Completa"
@@ -70,6 +78,7 @@ function App() {
           tasks={tasks.filter((t) => t.state === "Completa")}
           onTaskUpdate={updateTask}
           onDeletTask={deletTask}
+          onsetTask={setTask}
         />
       </div>
     </div>
