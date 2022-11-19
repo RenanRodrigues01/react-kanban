@@ -1,5 +1,8 @@
-input {
+.txt {
+    padding: 0.3em;
+    background-color: rgba( 0, 0, 0, 0.1);
     color: black;
+    border-radius: 5px;
 }
 
 select {
