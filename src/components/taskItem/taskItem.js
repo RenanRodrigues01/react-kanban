@@ -35,14 +35,14 @@ function Taskitem({ id, title, taskState, onTaskUpdate, onDeletTask }) {
         )
     } else {
         return (
-            <>
-                <div onClick={(e) => setEditing(true)}>{editableTitle}</div>
-                <select onChange={taskStateChange} value={taskState}>
+            <div className="taskContainer">
+                <p className="task" onClick={(e) => setEditing(true)}>{editableTitle}</p>
+                <select className="taskState" onChange={taskStateChange} value={taskState}>
                     <option value="Pendente">Pendente</option>
                     <option value="Fazendo">Fazendo</option>
                     <option value="Completa">Completa</option>
                 </select>
-            </>
+            </div>
         );
     };
 
