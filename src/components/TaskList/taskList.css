@@ -39,3 +39,16 @@
     height: 17px;
     margin-right: 4px;
 }
+
+@media screen and (max-width: 414px){
+    .TaskList {
+        padding: 1.5em;
+    }
+    .title {
+        padding: 0.5em;
+        font-size: 20px;
+    }
+    .btn {
+        font-size: 17px;
+    }
+}

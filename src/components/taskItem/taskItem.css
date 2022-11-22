@@ -1,13 +1,13 @@
 .taskContainer {
     background-color: rgba( 0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: 1em 0.5em;
+    padding: 0.5em 0.5em;
     margin-bottom: 0.5em;
 }
 .txt {
     padding: 0.3em;
     background-color: rgba( 0, 0, 0, 0.1);
-    color: black;
+    color: #FFF;
     border-radius: 5px;
     margin-bottom: 1em;
 }
@@ -18,11 +18,24 @@ select option {
 }
 
 .taskState {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     background-color: rgba( 0, 0, 0, 0.1);
 }
 
 .task {
     margin-bottom: 0.5em;
+}
+
+@media screen and (max-width: 414px) {
+    .txt {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    .task {
+        font-size: 20px;
+    }
+    .taskState {
+        font-size: 17px;
+    }
 }
 
