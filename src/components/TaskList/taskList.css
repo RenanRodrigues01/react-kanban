@@ -44,11 +44,11 @@
     .TaskList {
         padding: 1.5em;
     }
-    .title {
+    .TaskList .title {
         padding: 0.5em;
         font-size: 20px;
     }
-    .btn {
+    .TaskList .btn {
         font-size: 17px;
     }
 }
